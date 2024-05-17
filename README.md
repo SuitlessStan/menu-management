@@ -7,7 +7,6 @@ The application is containerized using Docker and Docker Compose, running multip
 Below, you'll find details on the project structure, how to get started, how to run tests, and information on the various API endpoints.
 
 
-- [Menu Management Application](#menu-management-application)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Running tests](#running-tests)
