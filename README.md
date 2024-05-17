@@ -6,7 +6,6 @@ The application is containerized using Docker and Docker Compose, running multip
 
 Below, you'll find details on the project structure, how to get started, how to run tests, and information on the various API endpoints.
 
-
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Running tests](#running-tests)
@@ -78,6 +77,21 @@ export { config }
 docker-compose up --build
 ```
 
+4. You have to bash into the node application's docker container to be able to install the migrations for the category, subcategory and items models 
+
+```
+#!/bin/bash
+
+docker exec menu-management bash
+```
+and then 
+
+```
+#!/bin/bash
+
+npm run migrate:up
+```
+
 # Running tests 
 
 In order to run the tests in tests directory, you have to bash into the node application's docker container. Example
@@ -97,35 +111,39 @@ npm run test
 # API Endpoints
 ## Health Check
 
--     GET /v1/health: Check the health of the server.
+- GET /v1/health: Check the health of the server.
 
 ## Categories
 
--     GET /v1/categories: Get all categories.
--     GET /v1/categories/:id: Get a category by ID.
+- GET /v1/categories: Get all categories.
+- GET /v1/categories/:id([0-9]+): Get a category by numeric ID.
+- GET /v1/categories/:name([a-zA-Z]+): Get a category by name.
 
 ## Subcategories
--     GET /v1/subcategories: Get all subcategories.
--     GET /v1/subcategories/:id: Get a subcategory by ID.
+
+- GET /v1/subcategories: Get all subcategories.
+- GET /v1/subcategories/:id([0-9]+): Get a subcategory by numeric ID.
+- GET /v1/subcategories/:name([a-zA-Z]+): Get a subcategory by name.
 
 ## Items
 
--     GET /v1/items: Get all items.
--     GET /v1/items/:id: Get an item by ID.
--     GET /v1/search: Search for an item.
+- GET /v1/items: Get all items.
+- GET /v1/items/:id([0-9]+): Get an item by numeric ID.
+- GET /v1/items/:name([a-zA-Z]+): Get an item by name.
+- GET /v1/search: Search for an item.
 
 ## Create
 
--     POST /v1/categories: Create a new category.
--     POST /v1/categories/:category_id/subcategories: Create a subcategory under a category.
--     POST /v1/categories/:category_id/items: Create an item under a category.
--     POST /v1/subcategories/:subcategory_id/items: Create an item under a subcategory.
+- POST /v1/categories: Create a new category.
+- POST /v1/categories/:category_id/subcategories: Create a subcategory under a category.
+- POST /v1/categories/:category_id/items: Create an item under a category.
+- POST /v1/subcategories/:subcategory_id/items: Create an item under a subcategory.
 
 ## Update
 
--     PUT /v1/categories/:id: Update a category.
--     PUT /v1/subcategories/:id: Update a subcategory.
--     PUT /v1/items/:id: Update an item.
+- PUT /v1/categories/:id: Update a category.
+- PUT /v1/subcategories/:id: Update a subcategory.
+- PUT /v1/items/:id: Update an item.
 
 ## Error Handling
 
