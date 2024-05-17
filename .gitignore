@@ -2,6 +2,8 @@
 data
 etc
 keys
+mysql
+.git
 
 # environmental
 # .env
