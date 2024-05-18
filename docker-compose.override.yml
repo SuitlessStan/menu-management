@@ -4,22 +4,16 @@ services:
     image: mysql:8.0.20
     container_name: menu-management-sql
     restart: always
-    command:
-      [
-        '--character-set-server=utf8mb4',
-        '--collation-server=utf8mb4_general_ci',
-        '--sort_buffer_size=1073741824'
-      ]
+    command: --init-file /data/application/init.sql
     environment:
-      - MYSQL_DATABASE=${mysql_database}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - "8989:3306"
     volumes:
-      - "./data/db/mysql:/var/lib/mysql"
-      - "./etc/mysql:/etc/mysql/conf.d"
+     - ./init.sql:/data/application/init.sql
   myadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
