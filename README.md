@@ -1,6 +1,6 @@
 # Menu Management Application
 
-This application is a comprehensive menu management system built with Node.js, MySQL, and Docker. It allows for the creation, retrieval, updating, and deletion of menu items, categories, and subcategories. The application also includes health check endpoints and robust error handling.
+This application is a comprehensive menu management system built with Node.js, MySQL, and Docker. It allows for the creation, retrieval and updating, categories, and subcategories. The application also includes health check endpoints and robust error handling.
 
 The application is containerized using Docker and Docker Compose, running multiple services including a Node.js application, MySQL, and PHPMyAdmin. The Node.js application runs on port 4000, MySQL on port 8989, and PHPMyAdmin on port 8080. These ports are mapped to your local machine, allowing for easy access to PHPMyAdmin's graphical interface at localhost://8080.
 
